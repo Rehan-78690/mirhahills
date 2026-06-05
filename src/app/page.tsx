@@ -1,4 +1,6 @@
+import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
+import Faq from "@/components/Faq";
 import FeatureCard from "@/components/FeatureCard";
 import Logo from "@/components/Logo";
 
@@ -32,6 +34,11 @@ export default function Home() {
             </a>
           </header>
 
+          {/* Breadcrumb trail (visual; schema lives in StructuredData) */}
+          <div className="border-t border-white/10 py-3">
+            <Breadcrumbs />
+          </div>
+
           {/* Hero body: copy + form */}
           <div className="grid items-center gap-12 pb-20 pt-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:pb-28 lg:pt-12">
             {/* Left: teaser copy */}
@@ -50,10 +57,15 @@ export default function Home() {
               </h1>
 
               <p className="mt-6 max-w-lg text-base leading-relaxed text-brand-100/90 sm:text-lg">
-                Mirha Hills is the next signature address from DubaiHaus — a
-                limited collection of premium residences designed for those who
-                expect more. Be the first to access floor plans, launch pricing,
-                and priority unit selection.
+                Mira Hills is the next signature address by{" "}
+                <span className="font-semibold text-white">AD Ports Group</span>{" "}
+                — a limited collection of premium residences designed for those
+                who expect more. Be the first to access floor plans, launch
+                pricing, and priority unit selection.
+              </p>
+
+              <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-brand-200/80">
+                A development by AD Ports Group · Featured by DubaiHaus advisory
               </p>
 
               <dl className="mt-10 grid max-w-md grid-cols-3 gap-6">
@@ -79,7 +91,7 @@ export default function Home() {
                   </h2>
                   <p className="mt-1 text-sm text-slate-500">
                     Join the priority list — no obligation. We&apos;ll reach out
-                    the moment Mirha Hills goes live.
+                    the moment Mira Hills goes live.
                   </p>
                 </div>
                 <ContactForm />
@@ -144,7 +156,7 @@ export default function Home() {
               }
             >
               Speak with a dedicated DubaiHaus advisor for honest, expert guidance
-              on whether Mirha Hills is the right fit for you.
+              on whether Mira Hills is the right fit for you.
             </FeatureCard>
           </div>
 
@@ -170,12 +182,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===================== FAQ ===================== */}
+      <Faq />
+
       {/* ===================== FOOTER ===================== */}
       <footer className="border-t border-slate-100 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-10 sm:flex-row sm:px-8">
           <Logo />
           <p className="text-center text-xs text-slate-400 sm:text-right">
-            © {new Date().getFullYear()} Mirha Hills · A DubaiHaus development.
+            © {new Date().getFullYear()} Mira Hills · Developed by AD Ports Group ·
+            Featured by DubaiHaus.
             <br className="hidden sm:block" />
             This is a pre-launch interest page. All details subject to change.
           </p>

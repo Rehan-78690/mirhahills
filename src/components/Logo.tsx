@@ -1,4 +1,4 @@
-/** Mirha Hills wordmark with a DubaiHaus-blue building glyph. */
+/** Mira Hills wordmark with a DubaiHaus-blue building glyph. */
 export default function Logo({ light = false }: { light?: boolean }) {
   const text = light ? "text-white" : "text-brand-800";
   const sub = light ? "text-brand-100" : "text-slate-400";
@@ -17,10 +17,10 @@ export default function Logo({ light = false }: { light?: boolean }) {
       </span>
       <span className="leading-none">
         <span className={`block text-lg font-bold tracking-tight ${text}`}>
-          Mirha <span className="text-brand-500">Hills</span>
+          Mira <span className="text-brand-500">Hills</span>
         </span>
         <span className={`block text-[10px] font-medium uppercase tracking-[0.22em] ${sub}`}>
-          by DubaiHaus
+          AD Ports Group
         </span>
       </span>
     </div>

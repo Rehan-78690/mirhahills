@@ -1,8 +1,8 @@
 {
-  "name": "mirhahills",
+  "name": "mira-hills",
   "version": "0.1.0",
   "private": true,
-  "description": "Mirha Hills Coming Soon landing page — a DubaiHaus off-plan project.",
+  "description": "Mira Hills Coming Soon landing page — an AD Ports Group off-plan project, featured by DubaiHaus.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",

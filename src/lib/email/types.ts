@@ -18,7 +18,7 @@ export interface ContactSubmission {
 /** A fully rendered email payload handed to a provider. */
 export interface EmailMessage {
   to: string;
-  /** Raw "from" header value, e.g. `Mirha Hills <info@dubaihaus.com>`. */
+  /** Raw "from" header value, e.g. `Mira Hills <info@dubaihaus.com>`. */
   from: string;
   /** Optional reply-to so staff can reply directly to the lead. */
   replyTo?: string;

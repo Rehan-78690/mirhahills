@@ -1,12 +1,16 @@
-# Mirha Hills — Coming Soon
+# Mira Hills — Coming Soon
 
-A polished, responsive **Coming Soon** landing page for **Mirha Hills**, a DubaiHaus
-off-plan real-estate launch. Built with **Next.js (App Router) + TypeScript +
-Tailwind CSS**, with a contact/registration form wired to a provider-agnostic
-email backend (SMTP / Resend / SendGrid).
+A polished, responsive **Coming Soon** landing page for **Mira Hills**, an off-plan
+real-estate launch **developed by AD Ports Group** and **featured by DubaiHaus**
+(the advisory partner operating this lead-generation page). Built with **Next.js
+(App Router) + TypeScript + Tailwind CSS**, with a contact/registration form wired
+to a provider-agnostic email backend (SMTP / Resend / SendGrid).
 
 The structure is intentionally modular so this can grow into the full project
-website later.
+website later. Brand, copy, SEO, and FAQ content are centralised in
+[`src/lib/site.ts`](src/lib/site.ts) as a single source of truth.
+
+> **Domain:** `mira-hills.com` (set in `src/lib/site.ts` → `siteConfig.url`).
 
 ## Tech stack
 
@@ -37,15 +41,22 @@ npm run build && npm start
 ```
 src/
   app/
-    layout.tsx              # Root layout, fonts, metadata
+    layout.tsx              # Root layout, fonts, full SEO metadata, JSON-LD
     page.tsx                # Coming-soon landing page (root route "/")
     globals.css             # Tailwind + base styles
+    sitemap.ts              # Generates /sitemap.xml
+    robots.ts               # Generates /robots.txt
+    opengraph-image.tsx     # Dynamically generated social share image
     api/contact/route.ts    # POST endpoint for the contact form
   components/
     ContactForm.tsx         # Client form: loading / success / error states
-    Logo.tsx                # Mirha Hills wordmark
+    Logo.tsx                # Mira Hills wordmark
     FeatureCard.tsx         # Supporting-section card
+    Faq.tsx                 # FAQ accordion (native <details>, crawlable)
+    Breadcrumbs.tsx         # Visible breadcrumb trail
+    StructuredData.tsx      # JSON-LD: WebSite, RealEstateAgent, Residence, FAQ, Breadcrumb
   lib/
+    site.ts                 # Single source of truth: brand, SEO, FAQ, breadcrumbs
     validation.ts           # Server-side input validation + normalization
     email/
       index.ts              # Public API of the email subsystem
@@ -97,7 +108,7 @@ Zoho is SMTP-based, so keep `EMAIL_PROVIDER=smtp` and fill in the Zoho values:
 - **Anti-spam:** a hidden honeypot field (`company`) silently drops bot submissions.
 - **Validation:** required-field + format + length checks run server-side in
   [`src/lib/validation.ts`](src/lib/validation.ts); the client mirrors states for UX.
-- **Email:** subject `New Mirha Hills Inquiry`, branded HTML body + plain-text
+- **Email:** subject `New Mira Hills Inquiry`, branded HTML body + plain-text
   fallback, with all user input HTML-escaped. The lead's email is set as `Reply-To`.
 
 ### Responses

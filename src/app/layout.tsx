@@ -1,28 +1,57 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import { siteConfig } from "@/lib/site";
+import StructuredData from "@/components/StructuredData";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
+const title = `${siteConfig.name} — ${siteConfig.tagline} | ${siteConfig.developer.name}`;
+
 export const metadata: Metadata = {
-  title: "Mirha Hills — Coming Soon | DubaiHaus",
-  description:
-    "Mirha Hills is an exclusive new off-plan launch coming soon. Register your interest for early access, floor plans, and priority pricing with the DubaiHaus advisory team.",
-  keywords: [
-    "Mirha Hills",
-    "DubaiHaus",
-    "off-plan Dubai",
-    "new launch",
-    "real estate",
-    "coming soon",
-  ],
-  openGraph: {
-    title: "Mirha Hills — Coming Soon",
-    description:
-      "An exclusive new off-plan launch. Register for early access with DubaiHaus.",
-    type: "website",
+  metadataBase: new URL(siteConfig.url),
+  title: {
+    default: title,
+    template: `%s | ${siteConfig.name}`,
   },
-  robots: { index: true, follow: true },
+  description: siteConfig.description,
+  keywords: [...siteConfig.keywords],
+  applicationName: siteConfig.name,
+  authors: [{ name: siteConfig.developer.name, url: siteConfig.developer.url }],
+  creator: siteConfig.developer.name,
+  publisher: siteConfig.advisor.name,
+  category: "real estate",
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: siteConfig.locale,
+    url: siteConfig.url,
+    siteName: siteConfig.name,
+    title,
+    description: siteConfig.shortDescription,
+    // og:image is supplied automatically by app/opengraph-image.tsx
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: siteConfig.shortDescription,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+  },
 };
 
 export const viewport: Viewport = {
@@ -38,7 +67,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <StructuredData />
+      </body>
     </html>
   );
 }
