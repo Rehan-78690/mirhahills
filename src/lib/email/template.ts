@@ -1,6 +1,6 @@
 import type { ContactSubmission } from "./types";
 
-const SOURCE_LABEL = "Miraheights Coming Soon Landing Page";
+const SOURCE_LABEL = "Mirha Hills Coming Soon Landing Page";
 
 /**
  * Escape user-supplied text for safe interpolation into HTML.
@@ -21,12 +21,12 @@ function orDash(value?: string): string {
   return trimmed && trimmed.length > 0 ? trimmed : "—";
 }
 
-export const CONTACT_SUBJECT = "New Miraheights Inquiry";
+export const CONTACT_SUBJECT = "New Mirha Hills Inquiry";
 
 /** Plain-text fallback body for clients that don't render HTML. */
 export function renderContactText(input: ContactSubmission): string {
   return [
-    "New Miraheights Inquiry",
+    "New Mirha Hills Inquiry",
     "",
     `Name:    ${orDash(input.name)}`,
     `Email:   ${orDash(input.email)}`,
@@ -61,14 +61,14 @@ export function renderContactHtml(input: ContactSubmission): string {
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px -28px rgba(20,30,71,0.45);">
             <tr>
               <td style="background:linear-gradient(135deg,#1b3ab8,#3768f3);padding:28px 32px;">
-                <div style="color:#bdd3ff;font-size:12px;letter-spacing:2px;text-transform:uppercase;">Miraheights</div>
+                <div style="color:#bdd3ff;font-size:12px;letter-spacing:2px;text-transform:uppercase;">Mirha Hills</div>
                 <div style="color:#ffffff;font-size:22px;font-weight:700;margin-top:4px;">New Inquiry Received</div>
               </td>
             </tr>
             <tr>
               <td style="padding:28px 32px;">
                 <p style="margin:0 0 18px;color:#334155;font-size:14px;">
-                  A new lead just submitted the Miraheights coming-soon contact form.
+                  A new lead just submitted the Mirha Hills coming-soon contact form.
                 </p>
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   ${row("Name", name)}
@@ -86,7 +86,7 @@ export function renderContactHtml(input: ContactSubmission): string {
               </td>
             </tr>
           </table>
-          <p style="color:#94a3b8;font-size:11px;margin:18px 0 0;">Miraheights · DubaiHaus Advisory</p>
+          <p style="color:#94a3b8;font-size:11px;margin:18px 0 0;">Mirha Hills · DubaiHaus Advisory</p>
         </td>
       </tr>
     </table>

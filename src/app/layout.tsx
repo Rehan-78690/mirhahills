@@ -5,11 +5,11 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "Miraheights — Coming Soon | DubaiHaus",
+  title: "Mirha Hills — Coming Soon | DubaiHaus",
   description:
-    "Miraheights is an exclusive new off-plan launch coming soon. Register your interest for early access, floor plans, and priority pricing with the DubaiHaus advisory team.",
+    "Mirha Hills is an exclusive new off-plan launch coming soon. Register your interest for early access, floor plans, and priority pricing with the DubaiHaus advisory team.",
   keywords: [
-    "Miraheights",
+    "Mirha Hills",
     "DubaiHaus",
     "off-plan Dubai",
     "new launch",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "coming soon",
   ],
   openGraph: {
-    title: "Miraheights — Coming Soon",
+    title: "Mirha Hills — Coming Soon",
     description:
       "An exclusive new off-plan launch. Register for early access with DubaiHaus.",
     type: "website",

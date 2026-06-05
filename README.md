@@ -1,6 +1,6 @@
-# Miraheights — Coming Soon
+# Mirha Hills — Coming Soon
 
-A polished, responsive **Coming Soon** landing page for **Miraheights**, a DubaiHaus
+A polished, responsive **Coming Soon** landing page for **Mirha Hills**, a DubaiHaus
 off-plan real-estate launch. Built with **Next.js (App Router) + TypeScript +
 Tailwind CSS**, with a contact/registration form wired to a provider-agnostic
 email backend (SMTP / Resend / SendGrid).
@@ -10,7 +10,7 @@ website later.
 
 ## Tech stack
 
-- **Next.js 14** (App Router, `src/` directory)
+- **Next.js 15** (App Router, `src/` directory)
 - **TypeScript** (strict)
 - **Tailwind CSS** — DubaiHaus-inspired palette (`brand` blue, `sky` accents, `gold` highlights)
 - **Nodemailer** for SMTP; native `fetch` for Resend / SendGrid (no heavy SDKs)
@@ -43,7 +43,7 @@ src/
     api/contact/route.ts    # POST endpoint for the contact form
   components/
     ContactForm.tsx         # Client form: loading / success / error states
-    Logo.tsx                # Miraheights wordmark
+    Logo.tsx                # Mirha Hills wordmark
     FeatureCard.tsx         # Supporting-section card
   lib/
     validation.ts           # Server-side input validation + normalization
@@ -97,7 +97,7 @@ Zoho is SMTP-based, so keep `EMAIL_PROVIDER=smtp` and fill in the Zoho values:
 - **Anti-spam:** a hidden honeypot field (`company`) silently drops bot submissions.
 - **Validation:** required-field + format + length checks run server-side in
   [`src/lib/validation.ts`](src/lib/validation.ts); the client mirrors states for UX.
-- **Email:** subject `New Miraheights Inquiry`, branded HTML body + plain-text
+- **Email:** subject `New Mirha Hills Inquiry`, branded HTML body + plain-text
   fallback, with all user input HTML-escaped. The lead's email is set as `Reply-To`.
 
 ### Responses

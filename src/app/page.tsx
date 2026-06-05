@@ -50,7 +50,7 @@ export default function Home() {
               </h1>
 
               <p className="mt-6 max-w-lg text-base leading-relaxed text-brand-100/90 sm:text-lg">
-                Miraheights is the next signature address from DubaiHaus — a
+                Mirha Hills is the next signature address from DubaiHaus — a
                 limited collection of premium residences designed for those who
                 expect more. Be the first to access floor plans, launch pricing,
                 and priority unit selection.
@@ -79,7 +79,7 @@ export default function Home() {
                   </h2>
                   <p className="mt-1 text-sm text-slate-500">
                     Join the priority list — no obligation. We&apos;ll reach out
-                    the moment Miraheights goes live.
+                    the moment Mirha Hills goes live.
                   </p>
                 </div>
                 <ContactForm />
@@ -144,7 +144,7 @@ export default function Home() {
               }
             >
               Speak with a dedicated DubaiHaus advisor for honest, expert guidance
-              on whether Miraheights is the right fit for you.
+              on whether Mirha Hills is the right fit for you.
             </FeatureCard>
           </div>
 
@@ -175,7 +175,7 @@ export default function Home() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-10 sm:flex-row sm:px-8">
           <Logo />
           <p className="text-center text-xs text-slate-400 sm:text-right">
-            © {new Date().getFullYear()} Miraheights · A DubaiHaus development.
+            © {new Date().getFullYear()} Mirha Hills · A DubaiHaus development.
             <br className="hidden sm:block" />
             This is a pre-launch interest page. All details subject to change.
           </p>

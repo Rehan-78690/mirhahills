@@ -1,8 +1,8 @@
 {
-  "name": "miraheights",
+  "name": "mirhahills",
   "version": "0.1.0",
   "private": true,
-  "description": "Miraheights Coming Soon landing page — a DubaiHaus off-plan project.",
+  "description": "Mirha Hills Coming Soon landing page — a DubaiHaus off-plan project.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
