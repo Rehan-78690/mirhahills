@@ -5,7 +5,7 @@ import Figure from "./Figure";
 export function AmenityCard({ item }: { item: AmenityItem }) {
   return (
     <article className="group overflow-hidden rounded-2xl border border-lux-line bg-white shadow-lux-sm transition hover:-translate-y-1 hover:shadow-lux">
-      <Figure src={item.image} alt={item.name} className="h-44 w-full">
+      <Figure src={item.image} alt={`${item.name} — Mira Hills, Abu Dhabi`} className="h-44 w-full">
         {item.stat && (
           <span className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-bold tracking-wide text-lux-gold-dark backdrop-blur">
             {item.stat}
@@ -26,7 +26,7 @@ export function ResidenceCard({ residence }: { residence: Residence }) {
     <article className="group overflow-hidden rounded-2xl border border-lux-line bg-white shadow-lux-sm transition hover:-translate-y-1 hover:shadow-lux">
       <Figure
         src={residence.image}
-        alt={residence.name}
+        alt={`${residence.name} at Mira Hills, Abu Dhabi`}
         className="h-52 w-full"
         overlay="linear-gradient(to top, rgba(44,34,24,0.55), transparent 55%)"
       >

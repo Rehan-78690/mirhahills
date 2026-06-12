@@ -9,7 +9,7 @@ export default function Gallery({ items }: { items: GalleryItem[] }) {
         <Figure
           key={item.image}
           src={item.image}
-          alt={item.caption}
+          alt={`${item.caption} — Mira Hills, Abu Dhabi`}
           overlay="linear-gradient(to top, rgba(44,34,24,0.6), transparent 50%)"
           className={`group min-h-[160px] rounded-2xl ${
             i === 0 ? "col-span-2 row-span-2 lg:min-h-[336px]" : "lg:min-h-[160px]"

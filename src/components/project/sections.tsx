@@ -67,7 +67,9 @@ export function SubpageHero({
     <section className="relative">
       <Figure
         src={image}
-        alt={title}
+        alt={`${title} — Mira Hills, Abu Dhabi`}
+        priority
+        sizes="100vw"
         overlay="linear-gradient(to bottom, rgba(28,21,14,0.55), rgba(28,21,14,0.78))"
         className="flex min-h-[58vh] items-end"
       >
