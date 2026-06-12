@@ -34,11 +34,19 @@ export default function ProjectSchema({
         addressRegion: "Abu Dhabi",
         addressCountry: "AE",
       },
+      // Approximate location on the Abu Dhabi–Dubai (Ghantoot) corridor; the
+      // exact plot is confirmed at launch.
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 24.832,
+        longitude: 54.781,
+      },
       containedInPlace: { "@type": "AdministrativeArea", name: "Abu Dhabi, UAE" },
       developer: {
         "@type": "Organization",
         name: miraHills.developer.name,
         url: miraHills.developer.url,
+        sameAs: [miraHills.developer.url],
       },
       additionalProperty: [
         { "@type": "PropertyValue", name: "Project type", value: "Master-planned community (off-plan)" },
@@ -52,7 +60,11 @@ export default function ProjectSchema({
       name: miraHills.advisor.name,
       url: miraHills.advisor.url,
       email: miraHills.advisor.email,
+      telephone: miraHills.contact.phoneDisplay,
+      logo: absoluteUrl("/favicon.svg"),
+      image: absoluteUrl("/opengraph-image"),
       areaServed: "AE",
+      sameAs: [miraHills.advisor.url],
       description: `${miraHills.advisor.name} is the advisory partner featuring ${miraHills.fullName}, a development by ${miraHills.developer.name}.`,
     },
   ];

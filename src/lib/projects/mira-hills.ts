@@ -98,10 +98,10 @@ export const miraHills = {
   masterDeveloper: { name: "Mira Developments", url: "" },
   advisor: { name: "DubaiHaus", url: "https://dubaihaus.com", email: "info@dubaihaus.com" },
 
-  /** Replace with the real sales line. Used by WhatsApp button + tel links. */
+  /** Sales line. Used by WhatsApp button + tel links. */
   contact: {
-    whatsapp: "971500000000", // digits only, intl format — REPLACE
-    phoneDisplay: "+971 50 000 0000", // REPLACE
+    whatsapp: "971505231194", // digits only, intl format
+    phoneDisplay: "+971 50 523 1194",
   },
 
   tagline: "A New Standard of Urban Living",

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { miraHills } from "@/lib/projects/mira-hills";
 import { Button, Container, Eyebrow, SectionHeading } from "@/components/project/ui";
 import Figure from "@/components/project/Figure";
@@ -22,14 +23,23 @@ export default function MiraHillsPage() {
       <ProjectSchema breadcrumbs={breadcrumbs} faqs={p.faqs} />
 
       {/* 1 — HERO ------------------------------------------------------------ */}
-      <section className="relative">
-        <Figure
+      <section className="relative min-h-[92vh]">
+        {/* LCP image: real brochure aerial, eagerly loaded & optimized. */}
+        <Image
           src={p.hero.image}
           alt="Mira Hills Abu Dhabi masterplan aerial"
-          overlay="linear-gradient(to bottom, rgba(28,21,14,0.62), rgba(28,21,14,0.72))"
-          className="min-h-[92vh]"
-        >
-          <Container className="relative flex min-h-[92vh] flex-col justify-center py-24">
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div
+          aria-hidden="true"
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to bottom, rgba(28,21,14,0.62), rgba(28,21,14,0.72))" }}
+        />
+        <Container className="relative flex min-h-[92vh] flex-col justify-center py-24">
             <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
               <div>
                 <Eyebrow className="text-lux-champagne">{p.hero.eyebrow}</Eyebrow>
@@ -65,7 +75,6 @@ export default function MiraHillsPage() {
               </div>
             </div>
           </Container>
-        </Figure>
       </section>
 
       {/* 2 — QUICK FACTS ---------------------------------------------------- */}
