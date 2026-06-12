@@ -202,7 +202,7 @@ export default function MiraHillsPage() {
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {p.lifestyle.map((l) => (
               <article key={l.title} className="overflow-hidden rounded-2xl border border-lux-line bg-white shadow-lux-sm">
-                <Figure src={l.image} alt={l.title} className="h-48 w-full" />
+                <Figure src={l.image} alt={`${l.title} — Mira Hills, Abu Dhabi`} className="h-48 w-full" />
                 <div className="p-6">
                   <h3 className="font-display text-xl font-semibold text-lux-espresso">{l.title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-lux-taupe">{l.description}</p>
