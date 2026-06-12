@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { isAuthed, isConfigured } from "@/lib/admin-auth";
-import { readLeads, type Lead, type LeadType } from "@/lib/leads";
+import { readLeads, storageBackend, type Lead, type LeadType } from "@/lib/leads";
 import AdminLogin from "./AdminLogin";
 import LogoutButton from "./LogoutButton";
 
@@ -42,6 +42,7 @@ export default async function AdminPage({
 
   const sp = await searchParams;
   const filter = sp?.type ?? "all";
+  const backend = storageBackend();
   const all = await readLeads();
   const leads = filter === "all" ? all : all.filter((l) => l.type === filter);
 
@@ -132,7 +133,10 @@ export default async function AdminPage({
         )}
 
         <p className="mt-6 text-xs text-lux-taupe">
-          Showing {leads.length} of {counts.all} total submissions · stored in <code className="font-mono">data/leads.jsonl</code>
+          Showing {leads.length} of {counts.all} total submissions · stored in{" "}
+          <code className="font-mono">
+            {backend === "mongodb" ? "MongoDB" : "data/leads.jsonl"}
+          </code>
         </p>
       </main>
     </div>
