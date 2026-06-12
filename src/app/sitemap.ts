@@ -10,15 +10,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const abs = (path: string) => `${siteConfig.url}${path}`;
 
+  // Note: "/" permanently redirects to the Mira Hills landing page, so it is
+  // intentionally omitted here — the canonical destination is listed at
+  // priority 1 instead of the redirect.
   return [
-    { url: siteConfig.url, lastModified, changeFrequency: "weekly", priority: 1 },
     { url: abs("/projects"), lastModified, changeFrequency: "weekly", priority: 0.8 },
     // Mira Hills landing + subpages (Overview, Masterplan, Amenities, …).
     ...miraHills.subpages.map((s) => ({
       url: abs(s.href),
       lastModified,
       changeFrequency: "weekly" as const,
-      priority: s.href === miraHills.basePath ? 0.9 : 0.7,
+      priority: s.href === miraHills.basePath ? 1 : 0.7,
     })),
   ];
 }
