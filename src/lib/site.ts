@@ -14,10 +14,10 @@ export const siteConfig = {
   tagline: "Coming Soon",
   locale: "en_US",
   description:
-    "Mira Hills is an exclusive new off-plan launch by AD Ports Group, featured by DubaiHaus. Register your interest for early access to floor plans, launch pricing, and priority unit selection.",
+    "Mira Hills is an exclusive new off-plan master-planned community in Abu Dhabi by AD Ports Group, on the Abu Dhabi–Dubai corridor — featuring an 18-hole golf course, lagoons, hotels, schools and parks. Featured by DubaiHaus. Register for early access to floor plans, launch pricing and availability.",
   /** Shorter description for social cards / OG. */
   shortDescription:
-    "An exclusive new off-plan launch by AD Ports Group, featured by DubaiHaus. Register for early access.",
+    "An exclusive new off-plan master-planned community in Abu Dhabi by AD Ports Group. Featured by DubaiHaus — register for early access.",
 
   /** The project developer. */
   developer: {

@@ -33,13 +33,31 @@ const config: Config = {
           500: "#d4a93f",
           600: "#b88a23",
         },
+        // Luxury real-estate palette (Mira Hills project pages):
+        // warm ivory/sand backgrounds, gold/bronze accents, espresso text.
+        lux: {
+          ivory: "#FBF8F1",
+          cream: "#F6F1E6",
+          sand: "#EFE7D6",
+          champagne: "#E7DBC4",
+          gold: "#A6824C",
+          "gold-dark": "#876743",
+          bronze: "#B0894F",
+          espresso: "#2C2218",
+          coffee: "#4A3C2C",
+          taupe: "#7C6E5C",
+          line: "#E3D9C6",
+        },
       },
       fontFamily: {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Cormorant Garamond", "ui-serif", "Georgia", "serif"],
       },
       boxShadow: {
         card: "0 20px 60px -20px rgba(20, 30, 71, 0.35)",
         glow: "0 0 0 1px rgba(125, 184, 255, 0.25), 0 24px 60px -24px rgba(27, 58, 184, 0.55)",
+        lux: "0 30px 80px -40px rgba(44, 34, 24, 0.45)",
+        "lux-sm": "0 14px 40px -24px rgba(44, 34, 24, 0.4)",
       },
       backgroundImage: {
         "hero-radial":

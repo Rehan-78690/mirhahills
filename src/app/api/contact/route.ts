@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { sendContactEmail } from "@/lib/email";
-import { EmailConfigError } from "@/lib/email/types";
 import { validateContact } from "@/lib/validation";
+import { classifyLead, saveLead } from "@/lib/leads";
 
-/** Run on the Node.js runtime (Nodemailer needs Node APIs). */
+/** Run on the Node.js runtime (Nodemailer + filesystem need Node APIs). */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -15,14 +15,11 @@ export async function POST(request: Request) {
   try {
     body = await request.json();
   } catch {
-    return NextResponse.json(
-      { ok: false, error: "Invalid request body." },
-      { status: 400 }
-    );
+    return NextResponse.json({ ok: false, error: "Invalid request body." }, { status: 400 });
   }
 
   // Anti-spam honeypot: a real user never fills the hidden field. Pretend
-  // success so bots don't learn the trap, but send nothing.
+  // success so bots don't learn the trap, but store/send nothing.
   const honeypot = (body as Record<string, unknown>)?.[HONEYPOT_FIELD];
   if (typeof honeypot === "string" && honeypot.trim().length > 0) {
     return NextResponse.json({ ok: true });
@@ -36,25 +33,46 @@ export async function POST(request: Request) {
     );
   }
 
+  const data = result.data;
+
+  // 1) Attempt the email notification (best-effort).
+  let emailed = false;
   try {
-    await sendContactEmail(result.data);
-    return NextResponse.json({ ok: true });
+    await sendContactEmail(data);
+    emailed = true;
   } catch (error) {
-    // Log full detail server-side only — never leak secrets/config to client.
+    // Logged server-side only; never leaks secrets/config to the client.
     console.error("[contact] email send failed:", error);
+  }
 
-    if (error instanceof EmailConfigError) {
-      return NextResponse.json(
-        { ok: false, error: "Email service is not configured. Please try again later." },
-        { status: 500 }
-      );
-    }
+  // 2) Persist the lead so nothing is ever lost (visible in the admin panel).
+  let stored = false;
+  try {
+    await saveLead({
+      type: classifyLead(data.source),
+      name: data.name,
+      email: data.email,
+      phone: data.phone,
+      propertyType: data.propertyType,
+      budget: data.budget,
+      message: data.message,
+      source: data.source,
+      emailed,
+    });
+    stored = true;
+  } catch (error) {
+    console.error("[contact] lead storage failed:", error);
+  }
 
+  // Only a true failure (neither emailed nor stored) is surfaced to the user.
+  if (!emailed && !stored) {
     return NextResponse.json(
-      { ok: false, error: "We couldn't send your message. Please try again." },
+      { ok: false, error: "We couldn't process your message. Please try again." },
       { status: 502 }
     );
   }
+
+  return NextResponse.json({ ok: true });
 }
 
 /** Reject other methods cleanly. */

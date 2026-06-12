@@ -25,18 +25,17 @@ export const CONTACT_SUBJECT = "New Mira Hills Inquiry";
 
 /** Plain-text fallback body for clients that don't render HTML. */
 export function renderContactText(input: ContactSubmission): string {
-  return [
+  const lines = [
     "New Mira Hills Inquiry",
     "",
-    `Name:    ${orDash(input.name)}`,
-    `Email:   ${orDash(input.email)}`,
-    `Phone:   ${orDash(input.phone)}`,
-    "",
-    "Message:",
-    orDash(input.message),
-    "",
-    `Source: ${SOURCE_LABEL}`,
-  ].join("\n");
+    `Name:     ${orDash(input.name)}`,
+    `Email:    ${orDash(input.email)}`,
+    `Phone:    ${orDash(input.phone)}`,
+  ];
+  if (input.propertyType) lines.push(`Property: ${orDash(input.propertyType)}`);
+  if (input.budget) lines.push(`Budget:   ${orDash(input.budget)}`);
+  lines.push("", "Message:", orDash(input.message), "", `Source: ${input.source?.trim() || SOURCE_LABEL}`);
+  return lines.join("\n");
 }
 
 /** Branded HTML email body. All user input is escaped before interpolation. */
@@ -45,12 +44,18 @@ export function renderContactHtml(input: ContactSubmission): string {
   const email = escapeHtml(orDash(input.email));
   const phone = escapeHtml(orDash(input.phone));
   const message = escapeHtml(orDash(input.message)).replace(/\n/g, "<br />");
+  const source = escapeHtml(input.source?.trim() || SOURCE_LABEL);
 
   const row = (label: string, value: string) => `
     <tr>
       <td style="padding:10px 0;border-bottom:1px solid #e8f1ff;color:#64748b;font-size:13px;width:120px;vertical-align:top;">${label}</td>
       <td style="padding:10px 0;border-bottom:1px solid #e8f1ff;color:#0f172a;font-size:15px;font-weight:600;">${value}</td>
     </tr>`;
+
+  // Optional project-enquiry rows, only rendered when present.
+  const optionalRows =
+    (input.propertyType ? row("Property", escapeHtml(input.propertyType)) : "") +
+    (input.budget ? row("Budget", escapeHtml(input.budget)) : "");
 
   return `<!doctype html>
 <html lang="en">
@@ -74,6 +79,7 @@ export function renderContactHtml(input: ContactSubmission): string {
                   ${row("Name", name)}
                   ${row("Email", email)}
                   ${row("Phone", phone)}
+                  ${optionalRows}
                   ${row("Message", message)}
                 </table>
               </td>
@@ -81,7 +87,7 @@ export function renderContactHtml(input: ContactSubmission): string {
             <tr>
               <td style="padding:18px 32px;background:#f8fafc;border-top:1px solid #e8f1ff;">
                 <span style="display:inline-block;padding:6px 12px;border-radius:999px;background:#eef4ff;color:#1b3ab8;font-size:12px;font-weight:600;">
-                  Source: ${escapeHtml(SOURCE_LABEL)}
+                  Source: ${source}
                 </span>
               </td>
             </tr>

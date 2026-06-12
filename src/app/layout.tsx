@@ -1,12 +1,16 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Cormorant_Garamond } from "next/font/google";
 import { siteConfig } from "@/lib/site";
-import StructuredData from "@/components/StructuredData";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const display = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-display",
+});
 
-const title = `${siteConfig.name} — ${siteConfig.tagline} | ${siteConfig.developer.name}`;
+const title = `${siteConfig.name}, Abu Dhabi — Off-Plan Community by ${siteConfig.developer.name}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -66,11 +70,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body>
-        {children}
-        <StructuredData />
-      </body>
+    <html lang="en" className={`${inter.variable} ${display.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

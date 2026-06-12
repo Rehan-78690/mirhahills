@@ -70,6 +70,26 @@ src/
         sendgrid.ts         # SendGrid HTTP API
 ```
 
+## SEO
+
+SEO is driven entirely from [`src/lib/site.ts`](src/lib/site.ts) (name, domain,
+description, keywords, developer/advisor, breadcrumbs, and FAQ content), so there's
+one place to update.
+
+| Feature | Where | Notes |
+| --- | --- | --- |
+| **Meta tags & description** | [`src/app/layout.tsx`](src/app/layout.tsx) | Title template, description, keywords, canonical, `metadataBase`, robots/googleBot directives. |
+| **Open Graph / Twitter** | `layout.tsx` + [`opengraph-image.tsx`](src/app/opengraph-image.tsx) | `summary_large_image` card; the 1200×630 share image is generated dynamically (no static asset to maintain). |
+| **FAQs** | [`Faq.tsx`](src/components/Faq.tsx) + `site.ts` | Rendered with native `<details>` (crawlable, no-JS) **and** mirrored as `FAQPage` JSON-LD for rich results. |
+| **Breadcrumbs** | [`Breadcrumbs.tsx`](src/components/Breadcrumbs.tsx) + `site.ts` | Visible trail **and** `BreadcrumbList` JSON-LD. |
+| **Structured data** | [`StructuredData.tsx`](src/components/StructuredData.tsx) | JSON-LD `@graph`: `WebSite`, `RealEstateAgent` (DubaiHaus), `Residence` (developer = AD Ports Group), `BreadcrumbList`, `FAQPage`. |
+| **Sitemap** | [`src/app/sitemap.ts`](src/app/sitemap.ts) | Served at `/sitemap.xml`. Add routes here as the site grows. |
+| **robots.txt** | [`src/app/robots.ts`](src/app/robots.ts) | Allows all, disallows `/api/`, links the sitemap. |
+| **Favicon** | [`public/favicon.svg`](public/favicon.svg) | SVG mark matching the logo. |
+
+> **Before going live:** confirm the production domain in `siteConfig.url`
+> (`https://mira-hills.com`). All canonical/OG/sitemap URLs derive from it.
+
 ## Email configuration
 
 The email provider is selected with the `EMAIL_PROVIDER` environment variable.
@@ -123,6 +143,53 @@ Zoho is SMTP-based, so keep `EMAIL_PROVIDER=smtp` and fill in the Zoho values:
 
 Server errors are logged with full detail via `console.error`; the client only
 ever receives a generic, safe message — secrets are never exposed.
+
+Every submission is **persisted** (not just emailed) to `data/leads.jsonl` via
+[`src/lib/leads.ts`](src/lib/leads.ts), so leads are never lost even if email
+delivery fails. Leads are classified as `enquiry`, `brochure` (the enquiry form's
+"email me the brochure" checkbox) or `contact` (coming-soon page).
+
+## Project pages (Mira Hills)
+
+The public site is the **Mira Hills, Abu Dhabi** project experience. The root
+`/` permanently redirects to the canonical project URL.
+
+| Route | Purpose |
+| --- | --- |
+| `/projects/mira-hills-abu-dhabi` | Landing (hero, quick facts, overview, location, masterplan, residences, lifestyle, amenities, investment, gallery, FAQ, enquiry) |
+| `…/masterplan` | Zones, open space, mobility, utilities, Phase 1.1 |
+| `…/amenities` | Grouped amenity collections |
+| `…/location` | Abu Dhabi–Dubai corridor |
+| `…/residences` | Property types (no invented prices/sizes) |
+| `…/investment` | Investment case |
+| `/coming-soon` | Original coming-soon page (noindex) |
+
+All content is data-driven from [`src/lib/projects/mira-hills.ts`](src/lib/projects/mira-hills.ts).
+Every page has keywords, an FAQ section + `FAQPage` JSON-LD, breadcrumbs and
+real-estate structured data. Brochure images map via
+[`public/images/mira-hills/MANIFEST.md`](public/images/mira-hills/MANIFEST.md)
+(missing images fall back to a warm gradient).
+
+## Admin panel
+
+A simple password-protected dashboard lists all enquiries and brochure requests.
+
+- **Route:** `/admin-secure-mira` (noindex, robots-disallowed)
+- **Auth:** set `ADMIN_PASSWORD` (and a random `ADMIN_SESSION_SECRET`) in the
+  environment. Login sets an httpOnly, HMAC-signed session cookie — the raw
+  password is never stored client-side.
+- **Features:** filter by type (all / enquiries / brochure / contact), per-type
+  counts, an `emailed` indicator, and **Export CSV** (`/api/admin/export`).
+
+```bash
+# .env.local
+ADMIN_PASSWORD=choose-a-strong-password
+ADMIN_SESSION_SECRET=$(openssl rand -hex 32)
+```
+
+> Storage is a local JSON-Lines file (`data/leads.jsonl`, git-ignored). It works
+> for self-hosted `next start`; on ephemeral/serverless hosts swap
+> `saveLead`/`readLeads` for a database.
 
 ## Security notes
 

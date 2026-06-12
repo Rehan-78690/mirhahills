@@ -9,7 +9,15 @@ export interface ValidationResult {
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MAX = { name: 120, email: 200, phone: 40, message: 2000 } as const;
+const MAX = {
+  name: 120,
+  email: 200,
+  phone: 40,
+  message: 2000,
+  propertyType: 80,
+  budget: 80,
+  source: 120,
+} as const;
 
 /** A loose phone matcher: digits, spaces, and + ( ) - separators. */
 const PHONE_RE = /^[+()\d][\d\s()\-.]{4,}$/;
@@ -30,6 +38,10 @@ export function validateContact(raw: unknown): ValidationResult {
   const email = asString(body.email);
   const phone = asString(body.phone);
   const message = asString(body.message);
+  // Optional project-enquiry fields. Capped to bound the email body.
+  const propertyType = asString(body.propertyType).slice(0, MAX.propertyType);
+  const budget = asString(body.budget).slice(0, MAX.budget);
+  const source = asString(body.source).slice(0, MAX.source);
 
   if (!name) {
     errors.name = "Full name is required.";
@@ -63,6 +75,9 @@ export function validateContact(raw: unknown): ValidationResult {
       email,
       phone: phone || undefined,
       message: message || undefined,
+      propertyType: propertyType || undefined,
+      budget: budget || undefined,
+      source: source || undefined,
     },
   };
 }

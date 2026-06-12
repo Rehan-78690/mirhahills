@@ -13,6 +13,11 @@ export interface ContactSubmission {
   email: string;
   phone?: string;
   message?: string;
+  /** Optional project-enquiry fields (e.g. Mira Hills project pages). */
+  propertyType?: string;
+  budget?: string;
+  /** Where the lead came from; shown as the email "Source" line. */
+  source?: string;
 }
 
 /** A fully rendered email payload handed to a provider. */
