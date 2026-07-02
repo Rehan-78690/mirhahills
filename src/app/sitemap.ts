@@ -22,5 +22,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: s.href === miraHills.basePath ? 1 : 0.7,
     })),
+    // Legal pages.
+    { url: abs("/privacy-policy"), lastModified, changeFrequency: "yearly", priority: 0.3 },
+    { url: abs("/terms"), lastModified, changeFrequency: "yearly", priority: 0.3 },
   ];
 }

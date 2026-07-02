@@ -1,10 +1,14 @@
 # Mira Hills — Coming Soon
 
-A polished, responsive **Coming Soon** landing page for **Mira Hills**, an off-plan
-real-estate launch **developed by AD Ports Group** and **featured by DubaiHaus**
-(the advisory partner operating this lead-generation page). Built with **Next.js
-(App Router) + TypeScript + Tailwind CSS**, with a contact/registration form wired
-to a provider-agnostic email backend (SMTP / Resend / SendGrid).
+A polished, responsive **independent informational portal** about **Mira Hills**, an
+off-plan real-estate project. This site is **not** the official Mira Developments or
+Mira Hills website and is **not affiliated with, endorsed by, or operated by** any
+official developer entity (the official developer is
+[Mira Developments](https://miradevelopments.ae/)). Built with **Next.js (App Router) +
+TypeScript + Tailwind CSS**, with a contact/enquiry form wired to a provider-agnostic
+email backend (SMTP / Resend / SendGrid). A first-visit non-affiliation popup, a
+site-wide disclaimer, and `/privacy-policy` + `/terms` pages make the independent status
+explicit.
 
 The structure is intentionally modular so this can grow into the full project
 website later. Brand, copy, SEO, and FAQ content are centralised in
@@ -16,7 +20,7 @@ website later. Brand, copy, SEO, and FAQ content are centralised in
 
 - **Next.js 15** (App Router, `src/` directory)
 - **TypeScript** (strict)
-- **Tailwind CSS** — DubaiHaus-inspired palette (`brand` blue, `sky` accents, `gold` highlights)
+- **Tailwind CSS** — neutral brand palette (`brand` blue, `sky` accents, `gold` highlights)
 - **Nodemailer** for SMTP; native `fetch` for Resend / SendGrid (no heavy SDKs)
 
 ## Getting started
@@ -82,7 +86,7 @@ one place to update.
 | **Open Graph / Twitter** | `layout.tsx` + [`opengraph-image.tsx`](src/app/opengraph-image.tsx) | `summary_large_image` card; the 1200×630 share image is generated dynamically (no static asset to maintain). |
 | **FAQs** | [`Faq.tsx`](src/components/Faq.tsx) + `site.ts` | Rendered with native `<details>` (crawlable, no-JS) **and** mirrored as `FAQPage` JSON-LD for rich results. |
 | **Breadcrumbs** | [`Breadcrumbs.tsx`](src/components/Breadcrumbs.tsx) + `site.ts` | Visible trail **and** `BreadcrumbList` JSON-LD. |
-| **Structured data** | [`StructuredData.tsx`](src/components/StructuredData.tsx) | JSON-LD `@graph`: `WebSite`, `RealEstateAgent` (DubaiHaus), `Residence` (developer = AD Ports Group), `BreadcrumbList`, `FAQPage`. |
+| **Structured data** | [`StructuredData.tsx`](src/components/StructuredData.tsx) | JSON-LD `@graph`: `WebSite`, `Organization` (this independent portal, explicitly unaffiliated), `Residence` (developer = Mira Developments), `BreadcrumbList`, `FAQPage`. |
 | **Sitemap** | [`src/app/sitemap.ts`](src/app/sitemap.ts) | Served at `/sitemap.xml`. Add routes here as the site grows. |
 | **robots.txt** | [`src/app/robots.ts`](src/app/robots.ts) | Allows all, disallows `/api/`, links the sitemap. |
 | **Favicon** | [`public/favicon.svg`](public/favicon.svg) | SVG mark matching the logo. |
@@ -105,7 +109,7 @@ Zoho is SMTP-based, so keep `EMAIL_PROVIDER=smtp` and fill in the Zoho values:
 | `SMTP_HOST`   | `smtp.zoho.com` (or `smtppro.zoho.com` for org/custom-domain mail) |
 | `SMTP_PORT`   | `465`                                                             |
 | `SMTP_SECURE` | `true`                                                            |
-| `SMTP_USER`   | your full Zoho mailbox, e.g. `info@dubaihaus.com`                 |
+| `SMTP_USER`   | your full Zoho mailbox, e.g. `info@mira-hills.com`                |
 | `SMTP_PASS`   | a Zoho **app-specific password** (Settings → Security → App Passwords) |
 
 > If 2FA is enabled on the Zoho account (recommended), you **must** use an

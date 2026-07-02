@@ -92,7 +92,7 @@ export function renderContactHtml(input: ContactSubmission): string {
               </td>
             </tr>
           </table>
-          <p style="color:#94a3b8;font-size:11px;margin:18px 0 0;">Mira Hills · DubaiHaus Advisory</p>
+          <p style="color:#94a3b8;font-size:11px;margin:18px 0 0;">Mira Hills · Independent Information Portal</p>
         </td>
       </tr>
     </table>

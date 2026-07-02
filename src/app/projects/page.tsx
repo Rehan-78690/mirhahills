@@ -5,9 +5,9 @@ import { siteConfig } from "@/lib/site";
 import { Container, SectionHeading } from "@/components/project/ui";
 import Figure from "@/components/project/Figure";
 
-const title = "Abu Dhabi Off-Plan Projects | DubaiHaus";
+const title = "Abu Dhabi Off-Plan Projects | Independent Information Portal";
 const description =
-  "Explore off-plan projects in Abu Dhabi featured by DubaiHaus, including Mira Hills — a master-planned community on the Abu Dhabi–Dubai corridor by AD Ports Group.";
+  "An independent information portal covering off-plan projects in Abu Dhabi, including Mira Hills — a master-planned community on the Abu Dhabi–Dubai corridor. Not affiliated with any official developer.";
 
 export const metadata: Metadata = {
   title,
@@ -22,7 +22,7 @@ export default function ProjectsIndex() {
   return (
     <main className="min-h-screen bg-lux-ivory text-lux-espresso">
       <Container className="py-16 lg:py-24">
-        <SectionHeading eyebrow="Off-Plan Projects" title="Abu Dhabi off-plan projects" intro="A curated selection of new-launch developments featured by the DubaiHaus advisory team." />
+        <SectionHeading eyebrow="Off-Plan Projects" title="Abu Dhabi off-plan projects" intro="General information on new-launch developments, compiled by this independent portal. Not affiliated with any official developer." />
         <div className="mt-12 grid gap-8 sm:grid-cols-2">
           {projects.map((proj) => (
             <Link key={proj.slug} href={proj.basePath} className="group overflow-hidden rounded-3xl border border-lux-line bg-white shadow-lux-sm transition hover:-translate-y-1 hover:shadow-lux">

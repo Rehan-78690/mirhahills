@@ -7,7 +7,7 @@ import StickyCta from "@/components/project/StickyCta";
 
 const title = "Mira Hills Abu Dhabi — Off-Plan Master-Planned Community";
 const description =
-  "Mira Hills Abu Dhabi by AD Ports Group: a master-planned community on the Abu Dhabi–Dubai corridor with an 18-hole golf course, lagoons, a landmark mall, five-star hotels, schools and a 5M sq ft park. Register your interest with DubaiHaus.";
+  "Independent information portal for Mira Hills Abu Dhabi: a master-planned community on the Abu Dhabi–Dubai corridor with an 18-hole golf course, lagoons, a landmark mall, five-star hotels, schools and a 5M sq ft park. Not affiliated with the official developer — details should be verified with Mira Developments.";
 
 export const metadata: Metadata = {
   title,

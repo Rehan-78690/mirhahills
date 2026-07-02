@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { miraHills } from "@/lib/projects/mira-hills";
+import { DISCLAIMER_SHORT } from "@/lib/site";
 
 /** Sticky top navigation with the project wordmark and subpage tabs. */
 export default function ProjectNav() {
@@ -18,14 +19,25 @@ export default function ProjectNav() {
   }, []);
 
   return (
-    <header
-      className={`sticky top-0 z-40 transition ${
-        scrolled
-          ? "border-b border-lux-line bg-lux-ivory/90 backdrop-blur supports-[backdrop-filter]:bg-lux-ivory/75"
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+    <>
+      {/* Slim non-affiliation disclaimer strip, always visible above the nav. */}
+      <div className="bg-lux-espresso text-lux-cream">
+        <p className="mx-auto max-w-6xl px-5 py-1.5 text-center text-[11px] leading-snug text-lux-cream/80 sm:px-8">
+          {DISCLAIMER_SHORT}{" "}
+          <Link href="/terms" className="underline underline-offset-2 hover:text-lux-gold">
+            Learn more
+          </Link>
+        </p>
+      </div>
+
+      <header
+        className={`sticky top-0 z-40 transition ${
+          scrolled
+            ? "border-b border-lux-line bg-lux-ivory/90 backdrop-blur supports-[backdrop-filter]:bg-lux-ivory/75"
+            : "bg-transparent"
+        }`}
+      >
+        <nav className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
         <Link href={miraHills.basePath} className="flex items-baseline gap-2 leading-none">
           <span className="font-display text-xl font-semibold tracking-tight text-lux-espresso">
             Mira <span className="text-lux-gold">Hills</span>
@@ -63,7 +75,8 @@ export default function ProjectNav() {
         >
           Register interest
         </a>
-      </nav>
-    </header>
+        </nav>
+      </header>
+    </>
   );
 }

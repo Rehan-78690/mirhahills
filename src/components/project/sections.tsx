@@ -98,21 +98,30 @@ export function EnquiryBand({ source }: { source: string }) {
             <SectionHeading
               eyebrow="Register Interest"
               title="Request details &amp; availability"
-              intro="A DubaiHaus property consultant will personally share launch pricing, floor plans, payment plans and availability as soon as they are released."
+              intro="Share your details and our team will respond with the general project information we have available. This is an independent informational portal — details should be confirmed with the official developer."
               light
             />
             <dl className="mt-8 space-y-4 text-sm">
               <div>
-                <dt className="text-white/50">Developer</dt>
-                <dd className="font-semibold text-white">{miraHills.developer.name}</dd>
+                <dt className="text-white/50">Official developer</dt>
+                <dd className="font-semibold text-white">
+                  <a
+                    href={miraHills.developer.url}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    className="underline underline-offset-2 transition hover:text-lux-gold"
+                  >
+                    {miraHills.developer.name}
+                  </a>
+                </dd>
               </div>
               <div>
-                <dt className="text-white/50">Advisory partner</dt>
-                <dd className="font-semibold text-white">{miraHills.advisor.name}</dd>
+                <dt className="text-white/50">This website</dt>
+                <dd className="font-semibold text-white">Independent information portal (not affiliated)</dd>
               </div>
               <div>
                 <dt className="text-white/50">Email</dt>
-                <dd className="font-semibold text-white">{miraHills.advisor.email}</dd>
+                <dd className="font-semibold text-white">{miraHills.contactEmail}</dd>
               </div>
             </dl>
           </div>

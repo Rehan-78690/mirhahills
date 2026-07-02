@@ -53,7 +53,7 @@ export default function ContactForm() {
       }
 
       setStatus("success");
-      setMessage("Thank you — your details are in. Our DubaiHaus advisory team will be in touch shortly.");
+      setMessage("Thank you — your details are in. Our team will respond shortly with the general project information we have available.");
       setValues(INITIAL); // reset form after success
     } catch {
       setStatus("error");
@@ -196,7 +196,7 @@ export default function ContactForm() {
       )}
 
       <p className="text-center text-xs text-slate-400">
-        We respect your privacy. Your details are shared only with the DubaiHaus advisory team.
+        We respect your privacy. Your details are used only to respond to your enquiry.
       </p>
     </form>
   );

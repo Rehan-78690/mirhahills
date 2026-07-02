@@ -48,7 +48,7 @@ export default function OgImage() {
               color: "#bdd3ff",
             }}
           >
-            AD Ports Group · DubaiHaus
+Independent Information Portal
           </div>
         </div>
 

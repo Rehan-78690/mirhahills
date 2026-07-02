@@ -94,11 +94,17 @@ export const miraHills = {
   name: "Mira Hills",
   fullName: "Mira Hills, Abu Dhabi",
   emirate: "Abu Dhabi",
-  developer: { name: "AD Ports Group", url: "https://www.adportsgroup.com" },
-  masterDeveloper: { name: "Mira Developments", url: "" },
-  advisor: { name: "DubaiHaus", url: "https://dubaihaus.com", email: "info@dubaihaus.com" },
+  /**
+   * The project's OFFICIAL developer. This portal is INDEPENDENT and is not
+   * affiliated with, endorsed by, or operated by this entity — it is named only
+   * to point users to the authoritative source.
+   */
+  developer: { name: "Mira Developments", url: "https://miradevelopments.ae/" },
 
-  /** Sales line. Used by WhatsApp button + tel links. */
+  /** Contact identity for this independent portal (used for enquiry responses). */
+  contactEmail: "info@mira-hills.com",
+
+  /** Enquiry line used by the WhatsApp button + tel links. */
   contact: {
     whatsapp: "971505231194", // digits only, intl format
     phoneDisplay: "+971 50 523 1194",
@@ -107,7 +113,7 @@ export const miraHills = {
   tagline: "A New Standard of Urban Living",
   headline: "A landmark master-planned city between Abu Dhabi and Dubai.",
   positioning: [
-    "Mira Hills is a fully integrated destination by AD Ports Group — where residences, business, hospitality, education, healthcare and culture come together within one master-planned environment.",
+    "Mira Hills is a fully integrated destination — where residences, business, hospitality, education, healthcare and culture come together within one master-planned environment.",
     "Set along the Abu Dhabi–Dubai corridor and designed around connectivity, lifestyle and long-term growth, it is one of the region's most ambitious new off-plan communities.",
   ],
 
@@ -364,7 +370,7 @@ export const miraHills = {
   },
 
   investment: [
-    { title: "Landmark master-planned destination", body: "One of the region's most ambitious integrated communities, backed by AD Ports Group — scale that supports long-term placemaking and value." },
+    { title: "Landmark master-planned destination", body: "One of the region's most ambitious integrated communities — scale that supports long-term placemaking and value." },
     { title: "Strategic Abu Dhabi–Dubai corridor", body: "A position between two emirates on a corridor targeted for sustained infrastructure and population growth." },
     { title: "True mixed-use community", body: "Residential, education, healthcare, hospitality, retail and commercial uses in one place — diversified demand drivers, not a single-asset bet." },
     { title: "Major lifestyle anchors", body: "Championship golf, a landmark mall, five-star hotels, lagoons, private beaches and a 5M sq ft park underpin desirability and rental appeal." },
@@ -385,13 +391,13 @@ export const miraHills = {
 
   faqs: [
     { question: "Where is Mira Hills located?", answer: "Mira Hills is in Abu Dhabi, positioned on the coastal corridor between Abu Dhabi and Dubai. The masterplan is planned around regional connectivity, with access from existing road networks." },
-    { question: "Who is the developer of Mira Hills?", answer: "Mira Hills is developed by AD Ports Group, with Mira Developments. DubaiHaus is the advisory partner featuring the project and managing buyer registrations." },
+    { question: "Who is the developer of Mira Hills?", answer: "The official developer is Mira Developments (miradevelopments.ae). This website is an independent informational portal and is not affiliated with, endorsed by, or operated by the official developer. Please confirm all details with the official developer." },
     { question: "What types of property are available at Mira Hills?", answer: "The masterplan includes apartments (town-centre, island and lake-view), townhomes, and a full villa range — compact, standard, luxury, and premium/ultra-premium villas — plus branded residences." },
     { question: "What amenities will Mira Hills offer?", answer: "An 18-hole championship golf course, a lagoon network, a landmark mall with indoor ski, three five-star hotels, eight private beaches, a 5M sq ft Central Park, an international school, universities, a hospital, and a UAE museum, among others." },
     { question: "Is Mira Hills a good investment?", answer: "It is positioned for long-term growth: a large mixed-use community on the Abu Dhabi–Dubai corridor with diversified lifestyle, education, healthcare, hospitality and retail anchors that support enduring end-user and rental demand." },
     { question: "What are the prices and payment plans?", answer: "Pricing, payment plans and handover dates have not yet been released for this pre-launch project. Register your interest to receive launch pricing, floor plans and availability as soon as they are announced." },
     { question: "When does Mira Hills launch?", answer: "The official launch date will be announced shortly. Phase 1.1 covers the first-delivery western portion of the masterplan. Register to be among the first to receive launch information." },
-    { question: "How do I register my interest in Mira Hills?", answer: "Complete the enquiry form on this page with your details and preferred property type. A DubaiHaus property consultant will personally reach out with priority access and full project information." },
+    { question: "How do I register my interest in Mira Hills?", answer: "Complete the enquiry form on this page with your details and preferred property type. Our team will respond to your enquiry with the general project information we have available. Your details are used only to respond to your enquiry." },
   ] as Faq[],
 
   /**
@@ -403,12 +409,12 @@ export const miraHills = {
       "Mira Hills",
       "Mira Hills Abu Dhabi",
       "Mira Hills project",
-      "Mira Hills AD Ports Group",
+      "Mira Hills information",
       "Abu Dhabi off-plan projects",
       "master-planned community Abu Dhabi",
       "Abu Dhabi Dubai corridor property",
       "off-plan Abu Dhabi",
-      "DubaiHaus",
+      "property information portal",
     ],
     pages: {
       overview: {
@@ -455,7 +461,7 @@ export const miraHills = {
         keywords: ["Mira Hills investment", "Abu Dhabi off-plan investment", "invest in Abu Dhabi property", "Mira Hills ROI"],
         faqs: [
           { question: "Is Mira Hills a good investment?", answer: "It is positioned for long-term value: a large mixed-use community on the Abu Dhabi–Dubai corridor with diversified lifestyle, education, healthcare, hospitality and retail anchors supporting end-user and rental demand." },
-          { question: "Who is the developer of Mira Hills?", answer: "Mira Hills is developed by AD Ports Group, with Mira Developments. DubaiHaus is the advisory partner managing buyer registrations." },
+          { question: "Who is the developer of Mira Hills?", answer: "The official developer is Mira Developments (miradevelopments.ae). This website is an independent informational portal and is not affiliated with, endorsed by, or operated by the official developer." },
           { question: "What are the payment plans and prices?", answer: "Payment plans and pricing have not yet been released for this pre-launch project. Register your interest to receive launch pricing and availability first." },
           { question: "What makes Mira Hills different from other Abu Dhabi projects?", answer: "Its scale and mix: a complete master-planned city — residences, universities, a hospital, hotels, retail and a championship golf course — on a strategic growth corridor, rather than a single-asset development." },
         ] as Faq[],

@@ -8,8 +8,9 @@ interface Crumb {
 
 /**
  * Project JSON-LD. Emits a graph describing the development (as a Place /
- * residential complex), its developer and advisory agent, the page breadcrumb
- * trail, and — where provided — an FAQPage. All values come from project data.
+ * residential complex) referencing its official developer, the independent
+ * information portal that publishes this page, the page breadcrumb trail, and —
+ * where provided — an FAQPage. All values come from project data.
  */
 export default function ProjectSchema({
   breadcrumbs = [],
@@ -55,17 +56,19 @@ export default function ProjectSchema({
       ],
     },
     {
-      "@type": "RealEstateAgent",
-      "@id": `${siteConfig.url}/#advisor`,
-      name: miraHills.advisor.name,
-      url: miraHills.advisor.url,
-      email: miraHills.advisor.email,
+      // The independent informational portal publishing this page. Deliberately
+      // an Organization (not a RealEstateAgent) with an explicit non-affiliation
+      // statement so it is never mistaken for the official developer.
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#portal`,
+      name: `${siteConfig.name} — ${siteConfig.tagline}`,
+      url: siteConfig.url,
+      email: miraHills.contactEmail,
       telephone: miraHills.contact.phoneDisplay,
       logo: absoluteUrl("/favicon.svg"),
       image: absoluteUrl("/opengraph-image"),
       areaServed: "AE",
-      sameAs: [miraHills.advisor.url],
-      description: `${miraHills.advisor.name} is the advisory partner featuring ${miraHills.fullName}, a development by ${miraHills.developer.name}.`,
+      description: `An independent informational portal about ${miraHills.fullName}. Not affiliated with, endorsed by, or operated by ${miraHills.developer.name} or any official ${miraHills.name} developer entity.`,
     },
   ];
 

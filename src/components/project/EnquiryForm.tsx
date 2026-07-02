@@ -86,7 +86,7 @@ export default function EnquiryForm({
       }
 
       setStatus("success");
-      setFeedback("Thank you — your enquiry is in. A DubaiHaus property consultant will be in touch shortly.");
+      setFeedback("Thank you — your enquiry is in. Our team will respond shortly with the general project information we have available.");
       setValues(INITIAL);
       setBrochure(false);
     } catch {
@@ -197,7 +197,7 @@ export default function EnquiryForm({
       )}
 
       <p className={`text-center text-xs ${dark ? "text-white/50" : "text-lux-taupe"}`}>
-        Your details are shared only with the DubaiHaus advisory team. No spam.
+        Your details are used only to respond to your enquiry. No spam. See our Privacy Policy.
       </p>
     </form>
   );

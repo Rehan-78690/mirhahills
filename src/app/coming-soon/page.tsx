@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import ContactForm from "@/components/ContactForm";
 import Faq from "@/components/Faq";
@@ -67,22 +68,21 @@ export default function Home() {
               </h1>
 
               <p className="mt-6 max-w-lg text-base leading-relaxed text-brand-100/90 sm:text-lg">
-                Mira Hills is the next signature address by{" "}
-                <span className="font-semibold text-white">AD Ports Group</span>{" "}
-                — a limited collection of premium residences designed for those
-                who expect more. Be the first to access floor plans, launch
-                pricing, and priority unit selection.
+                Mira Hills is a new master-planned community — a collection of
+                premium residences designed for those who expect more. This is an
+                independent information portal; register to receive the general
+                project information we have available.
               </p>
 
               <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-brand-200/80">
-                A development by AD Ports Group · Featured by DubaiHaus advisory
+                Independent information portal · Not affiliated with the official developer
               </p>
 
               <dl className="mt-10 grid max-w-md grid-cols-3 gap-6">
                 {[
-                  { k: "Priority", v: "Early access" },
-                  { k: "Exclusive", v: "Launch pricing" },
-                  { k: "Trusted", v: "DubaiHaus advisory" },
+                  { k: "Independent", v: "Information portal" },
+                  { k: "Free", v: "No obligation" },
+                  { k: "General", v: "Project info" },
                 ].map((item) => (
                   <div key={item.k}>
                     <dt className="text-lg font-bold text-white">{item.k}</dt>
@@ -125,8 +125,9 @@ export default function Home() {
               Be first in line when we launch
             </h2>
             <p className="mt-4 text-slate-500">
-              Premium launches move fast. Registering today gives you a genuine
-              head start — and a dedicated advisor every step of the way.
+              Register to receive the general project information we have
+              available. This is an independent information portal, not the
+              official developer website.
             </p>
           </div>
 
@@ -157,7 +158,7 @@ export default function Home() {
             </FeatureCard>
 
             <FeatureCard
-              title="DubaiHaus advisory"
+              title="General guidance"
               icon={
                 <svg className={iconClass} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8">
                   <circle cx="12" cy="8" r="3.5" />
@@ -165,8 +166,8 @@ export default function Home() {
                 </svg>
               }
             >
-              Speak with a dedicated DubaiHaus advisor for honest, expert guidance
-              on whether Mira Hills is the right fit for you.
+              Get general information to help you understand the project. Always
+              verify final details with the official developer before deciding.
             </FeatureCard>
           </div>
 
@@ -176,8 +177,8 @@ export default function Home() {
               Have a question before launch?
             </h3>
             <p className="mx-auto mt-3 max-w-xl text-brand-100">
-              Our advisory team is here to help. Register above and a DubaiHaus
-              specialist will personally reach out to you.
+              Register above and our team will respond with the general project
+              information we have available.
             </p>
             <a
               href="#register"
@@ -199,12 +200,21 @@ export default function Home() {
       <footer className="border-t border-slate-100 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-5 py-10 sm:flex-row sm:px-8">
           <Logo />
-          <p className="text-center text-xs text-slate-400 sm:text-right">
-            © {new Date().getFullYear()} Mira Hills · Developed by AD Ports Group ·
-            Featured by DubaiHaus.
-            <br className="hidden sm:block" />
-            This is a pre-launch interest page. All details subject to change.
-          </p>
+          <div className="text-center text-xs text-slate-400 sm:text-right">
+            <p>
+              © {new Date().getFullYear()} Mira Hills · Independent information portal.
+              Not affiliated with Mira Developments or the official Mira Hills developer.
+            </p>
+            <p className="mt-2">
+              <Link href="/privacy-policy" className="underline underline-offset-2 hover:text-slate-600">
+                Privacy Policy
+              </Link>
+              {" · "}
+              <Link href="/terms" className="underline underline-offset-2 hover:text-slate-600">
+                Terms &amp; Disclaimer
+              </Link>
+            </p>
+          </div>
         </div>
       </footer>
     </main>

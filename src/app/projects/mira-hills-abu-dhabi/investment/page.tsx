@@ -34,7 +34,7 @@ export default function InvestmentPage() {
       <SubpageHero
         eyebrow="Investment"
         title="A long-term growth story"
-        intro="Mira Hills pairs the scale of an AD Ports Group master-plan with the diversified demand of a true mixed-use community — built for enduring value."
+        intro="Mira Hills pairs the scale of a landmark master-plan with the diversified demand of a true mixed-use community — built for enduring value."
         image={`/images/mira-hills/gallery-aerial.jpg`}
         breadcrumbs={breadcrumbs}
       />

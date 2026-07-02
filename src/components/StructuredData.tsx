@@ -3,9 +3,11 @@ import { absoluteUrl, breadcrumbs, faqs, siteConfig } from "@/lib/site";
 /**
  * JSON-LD structured data for SEO rich results.
  *
- * Emits: WebSite, Organization (DubaiHaus advisory) with the developer
- * (AD Ports Group) referenced, BreadcrumbList, and FAQPage. Rendering these as
- * server-side <script> tags keeps them crawlable without any client JS.
+ * Emits: WebSite, Organization (the independent information portal), a
+ * Residence referencing the project's official developer (Mira Developments),
+ * BreadcrumbList, and FAQPage. Rendering these as server-side <script> tags
+ * keeps them crawlable without any client JS. The Organization is deliberately
+ * NOT a RealEstateAgent and clearly states it is independent / unaffiliated.
  */
 export default function StructuredData() {
   const graph = [
@@ -16,20 +18,20 @@ export default function StructuredData() {
       name: `${siteConfig.name} — ${siteConfig.tagline}`,
       description: siteConfig.description,
       inLanguage: "en",
-      publisher: { "@id": `${siteConfig.url}/#advisor` },
+      publisher: { "@id": `${siteConfig.url}/#portal` },
     },
     {
-      // The advisory partner operating this page and receiving registrations.
-      "@type": "RealEstateAgent",
-      "@id": `${siteConfig.url}/#advisor`,
-      name: siteConfig.advisor.name,
-      url: siteConfig.advisor.url,
-      email: siteConfig.advisor.email,
+      // The independent informational portal operating this website.
+      "@type": "Organization",
+      "@id": `${siteConfig.url}/#portal`,
+      name: `${siteConfig.name} — ${siteConfig.tagline}`,
+      url: siteConfig.url,
+      email: siteConfig.contactEmail,
       areaServed: "AE",
-      description: `${siteConfig.advisor.name} is the advisory partner featuring ${siteConfig.name}, an off-plan development by ${siteConfig.developer.name}.`,
+      description: `An independent informational portal about ${siteConfig.name}. Not affiliated with, endorsed by, or operated by ${siteConfig.officialDeveloper.name} or any official ${siteConfig.name} developer entity.`,
     },
     {
-      // The project itself, with its true developer.
+      // The project itself, referencing its official developer.
       "@type": "Residence",
       "@id": `${siteConfig.url}/#project`,
       name: siteConfig.name,
@@ -37,10 +39,9 @@ export default function StructuredData() {
       description: siteConfig.description,
       developer: {
         "@type": "Organization",
-        name: siteConfig.developer.name,
-        url: siteConfig.developer.url,
+        name: siteConfig.officialDeveloper.name,
+        url: siteConfig.officialDeveloper.url,
       },
-      offeredBy: { "@id": `${siteConfig.url}/#advisor` },
     },
     {
       "@type": "BreadcrumbList",

@@ -14,7 +14,7 @@ body {
   @apply bg-white text-slate-900 antialiased;
 }
 
-/* Soft DubaiHaus-blue selection highlight. */
+/* Soft brand-blue selection highlight. */
 ::selection {
   background: rgba(55, 104, 243, 0.18);
 }

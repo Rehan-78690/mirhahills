@@ -58,7 +58,7 @@ export default function MiraHillsPage() {
                   <Button href={`${p.basePath}/masterplan`} variant="outline-light">View Masterplan</Button>
                 </div>
                 <p className="mt-6 text-xs uppercase tracking-[0.18em] text-white/60">
-                  A development by {p.developer.name} · Featured by {p.advisor.name}
+                  Independent information portal · Not affiliated with {p.developer.name}
                 </p>
               </div>
 
@@ -281,22 +281,31 @@ export default function MiraHillsPage() {
             <div>
               <SectionHeading
                 eyebrow="Register Interest"
-                title="Be first when Mira Hills launches"
-                intro="Share your details and a DubaiHaus property consultant will personally reach out with launch pricing, floor plans, payment plans and availability the moment they are released."
+                title="Request Mira Hills information"
+                intro="Share your details and our team will respond with the general project information we have available. This is an independent informational portal — please confirm all details with the official developer."
                 light
               />
               <dl className="mt-8 space-y-4 text-sm">
                 <div>
-                  <dt className="text-white/50">Developer</dt>
-                  <dd className="font-semibold text-white">{p.developer.name}</dd>
+                  <dt className="text-white/50">Official developer</dt>
+                  <dd className="font-semibold text-white">
+                    <a
+                      href={p.developer.url}
+                      target="_blank"
+                      rel="noopener noreferrer nofollow"
+                      className="underline underline-offset-2 transition hover:text-lux-gold"
+                    >
+                      {p.developer.name}
+                    </a>
+                  </dd>
                 </div>
                 <div>
-                  <dt className="text-white/50">Advisory partner</dt>
-                  <dd className="font-semibold text-white">{p.advisor.name}</dd>
+                  <dt className="text-white/50">This website</dt>
+                  <dd className="font-semibold text-white">Independent information portal (not affiliated)</dd>
                 </div>
                 <div>
                   <dt className="text-white/50">Email</dt>
-                  <dd className="font-semibold text-white">{p.advisor.email}</dd>
+                  <dd className="font-semibold text-white">{p.contactEmail}</dd>
                 </div>
               </dl>
             </div>

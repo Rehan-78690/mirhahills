@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import { siteConfig } from "@/lib/site";
+import DisclaimerModal from "@/components/DisclaimerModal";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -10,7 +11,7 @@ const display = Cormorant_Garamond({
   variable: "--font-display",
 });
 
-const title = `${siteConfig.name}, Abu Dhabi — Off-Plan Community by ${siteConfig.developer.name}`;
+const title = `${siteConfig.name} — ${siteConfig.tagline}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -21,9 +22,9 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [...siteConfig.keywords],
   applicationName: siteConfig.name,
-  authors: [{ name: siteConfig.developer.name, url: siteConfig.developer.url }],
-  creator: siteConfig.developer.name,
-  publisher: siteConfig.advisor.name,
+  authors: [{ name: `${siteConfig.name} — ${siteConfig.tagline}`, url: siteConfig.url }],
+  creator: `${siteConfig.name} — ${siteConfig.tagline}`,
+  publisher: `${siteConfig.name} — ${siteConfig.tagline}`,
   category: "real estate",
   alternates: {
     canonical: "/",
@@ -71,7 +72,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${display.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <DisclaimerModal />
+      </body>
     </html>
   );
 }
