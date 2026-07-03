@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { DISCLAIMER_LONG, siteConfig } from "@/lib/site";
 
 /** localStorage key recording that the visitor accepted the non-affiliation notice. */
@@ -21,15 +22,20 @@ export default function DisclaimerModal() {
   // Start hidden; decide on mount so server and first client render match and
   // we never flash the modal at users who already accepted.
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Never show the notice on the temporary "offline" holding page.
+  const suppressed = pathname === "/offline";
 
   useEffect(() => {
+    if (suppressed) return;
     try {
       if (localStorage.getItem(STORAGE_KEY) !== "true") setOpen(true);
     } catch {
       // If localStorage is unavailable (private mode, etc.) still show the notice.
       setOpen(true);
     }
-  }, []);
+  }, [suppressed]);
 
   // Prevent background scroll while the modal is open.
   useEffect(() => {
