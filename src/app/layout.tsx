@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { headers } from "next/headers";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import { siteConfig } from "@/lib/site";
 import "./globals.css";
@@ -11,37 +10,38 @@ const display = Cormorant_Garamond({
   variable: "--font-display",
 });
 
-const title = `${siteConfig.name} — ${siteConfig.tagline}`;
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: {
-    default: title,
-    template: `%s | ${siteConfig.name}`,
-  },
-  description: siteConfig.description,
-  keywords: [...siteConfig.keywords],
-  applicationName: siteConfig.name,
-  authors: [{ name: `${siteConfig.name} — ${siteConfig.tagline}`, url: siteConfig.url }],
-  creator: `${siteConfig.name} — ${siteConfig.tagline}`,
-  publisher: `${siteConfig.name} — ${siteConfig.tagline}`,
+  title: "Mira Hills Abu Dhabi – Real Estate Project",
+  description:
+    "Discover Mira Hills in Abu Dhabi – a premier community by Mira Developments. Get project insights and details.",
+  keywords: [
+    "Mira Hills",
+    "Mira Hills Abu Dhabi",
+    "Mira Developments",
+    "Abu Dhabi real estate",
+    "luxury villas",
+    "Al Mamoura",
+  ],
+  applicationName: "Mira Hills",
   category: "real estate",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    type: "website",
-    locale: siteConfig.locale,
+    title: "Mira Hills Abu Dhabi – Real Estate Project",
+    description:
+      "Discover Mira Hills in Abu Dhabi – a premier community by Mira Developments. Get project insights and details.",
     url: siteConfig.url,
-    siteName: siteConfig.name,
-    title,
-    description: siteConfig.shortDescription,
-    // og:image is supplied automatically by app/opengraph-image.tsx
+    siteName: "Mira Hills",
+    type: "website",
+    locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description: siteConfig.shortDescription,
+    title: "Mira Hills Abu Dhabi – Real Estate Project",
+    description:
+      "Discover Mira Hills in Abu Dhabi – a premier community by Mira Developments. Get project insights and details.",
   },
   robots: {
     index: true,
@@ -54,6 +54,11 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  // Additional link tags for SEO hints (author, publisher)
+  other: {
+    "rel:author": "https://www.dubaihaus.com/en/",
+    "rel:publisher": "https://www.dubaihaus.com/en/",
+  },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
@@ -65,17 +70,13 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // Locale is resolved by middleware and passed via the `x-locale` header so the
-  // document language matches the content (defaults to English).
-  const lang = (await headers()).get("x-locale") === "de" ? "de" : "en";
-
   return (
-    <html lang={lang} className={`${inter.variable} ${display.variable}`}>
+    <html lang="en" className={`${inter.variable} ${display.variable}`}>
       <body>{children}</body>
     </html>
   );
