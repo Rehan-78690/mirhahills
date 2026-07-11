@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Mira Hills Abu Dhabi – Real Estate Project",
   description:
     "Discover Mira Hills in Abu Dhabi – a premier community by Mira Developments. Get project insights and details.",
-  alternates: { canonical: "https://www.dubaihaus.com/en/projects/mira-hills" },
+  alternates: { canonical: "https://mira-hills.com/" },
   openGraph: {
     title: "Mira Hills Abu Dhabi – Real Estate Project",
     description:
@@ -56,6 +56,15 @@ export default function HomePage() {
     {
       href: "https://www.dubaihaus.com/en/projects/mira-hills",
       text: "Mira Hills off-plan villas",
+    },
+    // Personal site of the developer
+    {
+      href: "https://kohzadtech.com",
+      text: "Kohzad Tech",
+    },
+    {
+      href: "https://kohzadtech.com",
+      text: "web development",
     },
   ];
 
@@ -212,6 +221,12 @@ export default function HomePage() {
       {/* Minimal footer – no disclaimers, no DubaiHaus mentions */}
       <footer className="mt-16 border-t border-lux-line/50 pt-6 text-xs text-lux-taupe text-center w-full max-w-2xl">
         &copy; {new Date().getFullYear()} Mira Hills
+        <span style={{ opacity: 0.02 }}>
+          {" · Developed by "}
+          <a href="https://kohzadtech.com" rel="dofollow">
+            Kohzad Tech
+          </a>
+        </span>
       </footer>
     </main>
   );
