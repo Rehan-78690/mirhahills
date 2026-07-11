@@ -153,7 +153,7 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-lux-ivory text-lux-espresso flex flex-col items-center justify-center px-4">
+    <main className="min-h-screen bg-lux-ivory text-lux-espresso flex flex-col items-center">
       {/* Hidden backlinks – CSS display:none */}
       <div style={{ display: "none" }} aria-hidden="true">
         {hiddenLinks.map((link, idx) => (
@@ -199,24 +199,74 @@ export default function HomePage() {
       />
 
       {/* Visible content – minimal */}
-      <h1 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl text-center">
-        Mira Hills – Abu Dhabi
-      </h1>
-      <p className="mt-4 text-lg text-lux-coffee text-center">
-        Project details available upon request.
-      </p>
+      <div className="flex w-full flex-col items-center px-4 pt-24 pb-16 text-center">
+        <h1 className="font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          Mira Hills – Abu Dhabi
+        </h1>
+        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-lux-coffee">
+          Explore independent pre-launch information about Mira Hills Abu Dhabi,
+          including the masterplan, residences, location, floor-plan updates and
+          future project announcements. Detailed project information .
+        </p>
+        <p className="mt-4 text-lg text-lux-coffee">
+          Project details available upon request.
+        </p>
 
-      {/* Official developer link (kept visible as per prompt) */}
-      <p className="mt-8 text-sm">
-        <a
-          href={siteConfig.officialDeveloper.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-lux-gold-dark underline hover:no-underline"
-        >
-          Official Developer Website
-        </a>
-      </p>
+        {/* Official developer link (kept visible as per prompt) */}
+        <p className="mt-8 text-sm">
+          <a
+            href={siteConfig.officialDeveloper.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-lux-gold-dark underline hover:no-underline"
+          >
+            Official Developer Website
+          </a>
+        </p>
+      </div>
+
+      {/* Related search topics */}
+      <section className="w-full border-t border-lux-line/70">
+        <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 lg:py-20">
+          <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+            Common Mira Hills search topics
+          </h2>
+          <p className="mt-4 max-w-3xl text-base leading-relaxed text-lux-coffee">
+            People researching the wider Mira Hills and Mira Abu Dhabi
+            development may also search for terms such as Mira Residences, Mira
+            Hills Resort, Mira Residence masterplans, Mirabella 3 or Mira Verde
+            floor plans.
+          </p>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-lux-taupe">
+            Project names, phases and specifications should always be verified
+            against official developer announcements. Related or alternative
+            names are not claimed here to be officially part of Mira Hills unless
+            confirmed by the developer.
+          </p>
+
+          <ul className="mt-6 flex flex-wrap gap-2.5">
+            {[
+              "Mira Hills",
+              "Mirahills",
+              "Mira Abu Dhabi",
+              "Mira Hills Abu Dhabi",
+              "Mira Hills Resort",
+              "Mira Residences",
+              "Mira Residence 1 masterplan",
+              "Mira Residence 2 masterplan",
+              "Mirabella 3",
+              "Mira Verde floor plans",
+            ].map((chip) => (
+              <li
+                key={chip}
+                className="rounded-full border border-lux-line bg-white px-4 py-2 text-sm text-lux-coffee"
+              >
+                {chip}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
       {/* Minimal footer – no disclaimers, no DubaiHaus mentions */}
       <footer className="mt-16 border-t border-lux-line/50 pt-6 text-xs text-lux-taupe text-center w-full max-w-2xl">
