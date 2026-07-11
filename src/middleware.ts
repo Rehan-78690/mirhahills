@@ -18,14 +18,32 @@ import type { NextRequest } from "next/server";
 type Locale = "en" | "de";
 const DEFAULT_LOCALE: Locale = "en";
 
+/** German-speaking countries used for the geo fallback. */
+const GERMAN_COUNTRIES = new Set(["DE", "AT", "CH"]);
+
+/**
+ * Resolve the best locale for a locale-less request. Priority:
+ *   1. saved NEXT_LOCALE cookie (explicit user choice)
+ *   2. Accept-Language (de*/de-DE/de-AT/de-CH → de; explicit en* → en)
+ *   3. geo/country fallback (DE/AT/CH → de) when Accept-Language is inconclusive
+ *   4. English default
+ * (An explicit locale already in the URL is handled by the caller and never
+ *  overridden here.)
+ */
 function detectLocale(request: NextRequest): Locale {
   const cookie = request.cookies.get("NEXT_LOCALE")?.value;
   if (cookie === "de" || cookie === "en") return cookie;
 
   const accept = request.headers.get("accept-language") ?? "";
-  // Look at the first (highest-priority) language tag only.
   const primary = accept.split(",")[0]?.trim().toLowerCase() ?? "";
-  if (primary.startsWith("de")) return "de";
+  if (primary.startsWith("de")) return "de"; // de, de-DE, de-AT, de-CH…
+  if (primary.startsWith("en")) return "en"; // explicit English preference wins over geo
+
+  // Geo fallback (e.g. Vercel's x-vercel-ip-country) only when the browser
+  // language is missing or inconclusive.
+  const country = (request.headers.get("x-vercel-ip-country") ?? "").toUpperCase();
+  if (GERMAN_COUNTRIES.has(country)) return "de";
+
   return DEFAULT_LOCALE;
 }
 

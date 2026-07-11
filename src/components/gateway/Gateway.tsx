@@ -30,6 +30,7 @@ export default function Gateway({ locale }: { locale: Locale }) {
   const c = content[locale];
   const alt = otherLocale(locale);
   const projectHref = DUBAIHAUS.project[locale];
+  const dubaihausHref = DUBAIHAUS.main[locale];
 
   return (
     <div className="min-h-screen bg-lux-ivory font-sans text-lux-espresso">
@@ -96,7 +97,7 @@ export default function Gateway({ locale }: { locale: Locale }) {
               <Arrow />
             </a>
             <a
-              href={DUBAIHAUS.main}
+              href={dubaihausHref}
               {...EXTERNAL}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-lux-line bg-white px-6 py-3.5 text-sm font-semibold text-lux-espresso transition hover:border-lux-taupe"
             >
@@ -225,7 +226,7 @@ export default function Gateway({ locale }: { locale: Locale }) {
                   </a>
                 </li>
                 <li>
-                  <a href={DUBAIHAUS.main} {...EXTERNAL} className="text-lux-cream/80 transition hover:text-lux-gold">
+                  <a href={dubaihausHref} {...EXTERNAL} className="text-lux-cream/80 transition hover:text-lux-gold">
                     {c.footer.dubaihaus}
                   </a>
                 </li>

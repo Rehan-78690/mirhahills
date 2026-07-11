@@ -88,9 +88,9 @@ export default function PrivacyPolicyPage() {
 
       <LegalSection heading="Cookies and local storage">
         <p>
-          We use your browser&apos;s local storage to remember that you have acknowledged
-          our non-affiliation notice, so it is not shown repeatedly. This does not identify
-          you personally.
+          We use a small functional cookie (<code>NEXT_LOCALE</code>) to remember your
+          language preference (English or German) so we can show you the right version of
+          the site. This does not identify you personally.
         </p>
       </LegalSection>
 

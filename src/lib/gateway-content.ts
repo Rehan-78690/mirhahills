@@ -25,9 +25,16 @@ export const OFFICIAL_DEVELOPER_URL =
   process.env.NEXT_PUBLIC_MIRA_OFFICIAL_URL || siteConfig.officialDeveloper.url;
 export const OFFICIAL_DEVELOPER_NAME = siteConfig.officialDeveloper.name;
 
-/** External DubaiHaus destinations (advisory / detailed project guides). */
+/**
+ * External DubaiHaus destinations (advisory / detailed project guides).
+ * Both the homepage and the project guide are locale-specific so German
+ * visitors always land on the German version of DubaiHaus.
+ */
 export const DUBAIHAUS = {
-  main: "https://www.dubaihaus.com/",
+  main: {
+    en: "https://www.dubaihaus.com/en",
+    de: "https://www.dubaihaus.com/de",
+  },
   project: {
     en: "https://www.dubaihaus.com/en/projects/mira-hills",
     de: "https://www.dubaihaus.com/de/projects/mira-hills",
