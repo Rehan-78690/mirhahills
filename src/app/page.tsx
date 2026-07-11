@@ -204,12 +204,12 @@ export default function HomePage() {
           Mira Hills – Abu Dhabi
         </h1>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-lux-coffee">
-          Explore independent pre-launch information about Mira Hills Abu Dhabi,
+          Explore information about Mira Hills Abu Dhabi,
           including the masterplan, residences, location, floor-plan updates and
-          future project announcements. Detailed project information .
+          future project announcements through the offical website of the developer Mira Developments.
         </p>
         <p className="mt-4 text-lg text-lux-coffee">
-          Project details available upon request.
+          Project details available upon request on the relevant site.
         </p>
 
         {/* Official developer link (kept visible as per prompt) */}
@@ -270,7 +270,15 @@ export default function HomePage() {
 
       {/* Minimal footer – no disclaimers, no DubaiHaus mentions */}
       <footer className="mt-16 border-t border-lux-line/50 pt-6 text-xs text-lux-taupe text-center w-full max-w-2xl">
-        &copy; {new Date().getFullYear()} Mira Hills
+        &copy; {new Date().getFullYear()} ·{" "}
+        <a
+          href={siteConfig.officialDeveloper.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-lux-gold-dark underline hover:no-underline"
+        >
+          Visit official website for detailed information
+        </a>
         <span style={{ opacity: 0.02 }}>
           {" · Developed by "}
           <a href="https://kohzadtech.com" rel="dofollow">

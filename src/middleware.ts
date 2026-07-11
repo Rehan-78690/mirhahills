@@ -4,13 +4,9 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Redirect /en, /de, /en/*, /de/* to root
-  if (
-    pathname === "/en" ||
-    pathname === "/de" ||
-    pathname.startsWith("/en/") ||
-    pathname.startsWith("/de/")
-  ) {
+  // /en and /de are accessible (indexable, in the sitemap, reachable by typing
+  // the URL directly). Only their sub-paths redirect to root.
+  if (pathname.startsWith("/en/") || pathname.startsWith("/de/")) {
     return NextResponse.redirect(new URL("/", request.url), 308);
   }
 
