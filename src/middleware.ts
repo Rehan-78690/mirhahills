@@ -4,11 +4,11 @@ import type { NextRequest } from "next/server";
 /**
  * Locale routing + legacy-route handling for the independent Mira Hills gateway.
  *
- *  - `/`                         → locale-detected redirect to `/en` or `/de` (307).
- *  - `/offline`                  → 308 permanent redirect to the locale gateway.
- *  - `/en/mira-hills`,`/de/...`  → 308 to `/en` / `/de` (supported alias, no dup content).
- *  - `/projects`, `/projects/*`, `/coming-soon` → gated: 307 to the locale gateway.
- *  - everything else (`/en`, `/de`, `/privacy-policy`, `/terms`) → passes through,
+ *  - `/`                         -> locale-detected redirect to `/en` or `/de` (307).
+ *  - `/offline`                  -> 308 permanent redirect to the locale gateway.
+ *  - `/en/mira-hills`,`/de/...`  -> 308 to `/en` / `/de` (supported alias, no dup content).
+ *  - `/projects`, `/projects/*`, `/coming-soon` -> gated: 307 to the locale gateway.
+ *  - everything else (`/en`, `/de`, `/privacy-policy`, `/terms`) -> passes through,
  *    with an `x-locale` request header so the root layout can set `<html lang>`.
  *
  * Locale is detected from the `NEXT_LOCALE` cookie, then `Accept-Language`,
@@ -24,8 +24,8 @@ const GERMAN_COUNTRIES = new Set(["DE", "AT", "CH"]);
 /**
  * Resolve the best locale for a locale-less request. Priority:
  *   1. saved NEXT_LOCALE cookie (explicit user choice)
- *   2. Accept-Language (de*/de-DE/de-AT/de-CH → de; explicit en* → en)
- *   3. geo/country fallback (DE/AT/CH → de) when Accept-Language is inconclusive
+ *   2. Accept-Language (de, de-DE, de-AT, de-CH -> de; explicit en -> en)
+ *   3. geo/country fallback (DE/AT/CH -> de) when Accept-Language is inconclusive
  *   4. English default
  * (An explicit locale already in the URL is handled by the caller and never
  *  overridden here.)
@@ -61,21 +61,21 @@ function redirectTo(request: NextRequest, pathname: string, status: 307 | 308) {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // Root → language-appropriate gateway (temporary: varies per visitor).
+  // Root -> language-appropriate gateway (temporary: varies per visitor).
   if (pathname === "/") {
     return redirectTo(request, `/${detectLocale(request)}`, 307);
   }
 
-  // Obsolete offline route → permanent redirect to the gateway.
+  // Obsolete offline route -> permanent redirect to the gateway.
   if (pathname === "/offline") {
     return redirectTo(request, `/${detectLocale(request)}`, 308);
   }
 
-  // Supported "/{locale}/mira-hills" aliases → canonical locale page (no dup content).
+  // Supported "/{locale}/mira-hills" aliases -> canonical locale page (no dup content).
   if (pathname === "/en/mira-hills") return redirectTo(request, "/en", 308);
   if (pathname === "/de/mira-hills") return redirectTo(request, "/de", 308);
 
-  // Gated detailed marketing pages → gateway (temporary; may be re-enabled later).
+  // Gated detailed marketing pages -> gateway (temporary; may be re-enabled later).
   if (pathname === "/projects" || pathname.startsWith("/projects/") || pathname === "/coming-soon") {
     return redirectTo(request, `/${detectLocale(request)}`, 307);
   }
