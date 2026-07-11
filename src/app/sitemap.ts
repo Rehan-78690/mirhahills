@@ -1,28 +1,36 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
-import { miraHills } from "@/lib/projects/mira-hills";
 
 /**
- * Generates /sitemap.xml. Add entries here as new routes are introduced so the
- * sitemap grows with the site.
+ * /sitemap.xml — the publicly indexable pages: the English and German gateway
+ * pages (each with hreflang alternates) and the legal pages. Gated marketing
+ * routes (/projects/*, /coming-soon) are intentionally excluded.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date();
   const abs = (path: string) => `${siteConfig.url}${path}`;
 
-  // Note: "/" permanently redirects to the Mira Hills landing page, so it is
-  // intentionally omitted here — the canonical destination is listed at
-  // priority 1 instead of the redirect.
+  const languages = {
+    en: abs("/en"),
+    de: abs("/de"),
+    "x-default": abs("/en"),
+  };
+
   return [
-    { url: abs("/projects"), lastModified, changeFrequency: "weekly", priority: 0.8 },
-    // Mira Hills landing + subpages (Overview, Masterplan, Amenities, …).
-    ...miraHills.subpages.map((s) => ({
-      url: abs(s.href),
+    {
+      url: abs("/en"),
       lastModified,
-      changeFrequency: "weekly" as const,
-      priority: s.href === miraHills.basePath ? 1 : 0.7,
-    })),
-    // Legal pages.
+      changeFrequency: "weekly",
+      priority: 1,
+      alternates: { languages },
+    },
+    {
+      url: abs("/de"),
+      lastModified,
+      changeFrequency: "weekly",
+      priority: 1,
+      alternates: { languages },
+    },
     { url: abs("/privacy-policy"), lastModified, changeFrequency: "yearly", priority: 0.3 },
     { url: abs("/terms"), lastModified, changeFrequency: "yearly", priority: 0.3 },
   ];

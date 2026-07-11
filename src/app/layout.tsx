@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
+import { headers } from "next/headers";
 import { Inter, Cormorant_Garamond } from "next/font/google";
 import { siteConfig } from "@/lib/site";
-import DisclaimerModal from "@/components/DisclaimerModal";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -65,17 +65,18 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  // Locale is resolved by middleware and passed via the `x-locale` header so the
+  // document language matches the content (defaults to English).
+  const lang = (await headers()).get("x-locale") === "de" ? "de" : "en";
+
   return (
-    <html lang="en" className={`${inter.variable} ${display.variable}`}>
-      <body>
-        {children}
-        <DisclaimerModal />
-      </body>
+    <html lang={lang} className={`${inter.variable} ${display.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
