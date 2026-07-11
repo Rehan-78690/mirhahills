@@ -12,7 +12,9 @@ export function gatewayMetadata(locale: Locale): Metadata {
   const url = `${siteConfig.url}/${locale}`;
 
   return {
-    title: c.meta.title,
+    // `absolute` bypasses the root layout's "%s | Mira Hills" template so the
+    // localized title matches the spec exactly (and avoids a redundant suffix).
+    title: { absolute: c.meta.title },
     description: c.meta.description,
     keywords: c.meta.keywords,
     alternates: {

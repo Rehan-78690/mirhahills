@@ -10,7 +10,8 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/admin-secure-mira", "/coming-soon"],
+      // Gated / non-public routes: keep crawlers on the /en and /de gateways.
+      disallow: ["/api/", "/admin-secure-mira", "/coming-soon", "/projects", "/offline"],
     },
     sitemap: `${siteConfig.url}/sitemap.xml`,
     host: siteConfig.url,
