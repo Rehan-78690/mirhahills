@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Mira Hills Abu Dhabi – Real Estate Project",
   description:
     "Discover Mira Hills in Abu Dhabi – a premier community by Mira Developments. Get project insights and details.",
-  alternates: { canonical: "/" },
+  alternates: { canonical: "https://www.dubaihaus.com/en/projects/mira-hills" },
   openGraph: {
     title: "Mira Hills Abu Dhabi – Real Estate Project",
     description:
